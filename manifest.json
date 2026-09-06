@@ -1,1 +1,10 @@
-
+{
+  "name": "Milo Social App",
+  "short_name": "Milo",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#172033",
+  "description": "Milo Social App",
+  "icons": []
+}
