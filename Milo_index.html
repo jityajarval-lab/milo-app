@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Milo — Social App Prototype</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050812;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{max-width:430px;margin:auto;min-height:100vh;background:#070b15;position:relative;padding-bottom:78px}
+header{height:64px;padding:18px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #172033;position:sticky;top:0;background:#070b15ee;backdrop-filter:blur(14px);z-index:5}
+.logo{font-size:28px;font-weight:800;font-style:italic}.icons{display:flex;gap:16px;font-size:21px}
+.screen{display:none;padding:18px}.screen.active{display:block}
+.stories{display:flex;gap:12px;overflow:auto;padding:4px 0 18px}.story{min-width:62px;text-align:center;font-size:11px;color:#c7cada}.avatar{width:56px;height:56px;border-radius:50%;border:2px solid #775cff;padding:2px;margin:auto;background:linear-gradient(135deg,#ff8aa5,#6d5cff)}
+.avatar>div{width:100%;height:100%;border-radius:50%;background:#202b40;display:grid;place-items:center;font-size:22px}
+.card{border-bottom:1px solid #172033;padding:4px 0 18px;margin-bottom:18px}.user{display:flex;align-items:center;gap:10px;margin-bottom:12px}.user .avatar{width:38px;height:38px}.user b{font-size:14px}.muted{color:#8992a8;font-size:12px}.postimg{width:100%;aspect-ratio:1/1;border-radius:14px;background:linear-gradient(135deg,#384e72,#f0a078 48%,#111827);display:grid;place-items:center;font-size:55px}.caption{margin:10px 2px;font-size:14px}.actions{display:flex;gap:20px;font-size:21px;margin-top:8px}.actions span{cursor:pointer}.search{background:#121a2a;border:1px solid #202c42;border-radius:12px;padding:12px;color:#aeb7c9;width:100%;font-size:14px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.chip{background:#121a2a;padding:8px 12px;border-radius:20px;font-size:12px}
+.profileHero{height:145px;border-radius:15px;background:linear-gradient(135deg,#222c49,#bd7788,#101827);position:relative;margin-bottom:58px}.profileAvatar{position:absolute;bottom:-45px;left:18px;width:90px;height:90px;border-radius:50%;border:4px solid #070b15;background:#28344b;display:grid;place-items:center;font-size:38px}.stats{display:flex;justify-content:space-around;text-align:center;margin:16px 0}.stats b{display:block}.stats small{color:#8c96aa}.btn{background:#705cff;border:0;color:#fff;border-radius:11px;padding:11px 16px;font-weight:700}.outline{background:#121a2a;border:1px solid #29344a}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.tile{aspect-ratio:1;background:linear-gradient(135deg,#526786,#d38a76,#1b273a);display:grid;place-items:center}
+.row{display:flex;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid #172033}.row .mini{width:44px;height:44px;border-radius:50%;background:#253149;display:grid;place-items:center}.row .grow{flex:1}.badge{background:#705cff;border-radius:12px;padding:3px 7px;font-size:10px}
+.composer textarea{width:100%;height:110px;background:#101827;color:#fff;border:1px solid #26334a;border-radius:12px;padding:12px;resize:none}.preview{margin-top:14px;height:220px;border-radius:14px;background:linear-gradient(135deg,#40567b,#e59b79);display:grid;place-items:center;font-size:45px}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(430px,100%);height:72px;background:#090e19ee;backdrop-filter:blur(18px);border-top:1px solid #172033;display:flex;justify-content:space-around;align-items:center;z-index:10}nav button{background:none;border:0;color:#8791a8;font-size:21px}nav button.active{color:#8b72ff}nav small{display:block;font-size:9px;margin-top:3px}
+.plus{width:48px;height:48px;border-radius:50%;background:#735cff!important;color:#fff!important;font-size:25px!important}
+h2{margin:8px 0 18px}.empty{text-align:center;color:#8b94a8;padding:70px 20px}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="logo">Milo</div><div class="icons"><span>⌕</span><span>♧</span><span>◉</span></div></header>
+
+<section id="home" class="screen active">
+<div class="stories">
+<div class="story"><div class="avatar"><div>＋</div></div>Your story</div>
+<div class="story"><div class="avatar"><div>👩</div></div>Riya</div><div class="story"><div class="avatar"><div>👨</div></div>Aman</div><div class="story"><div class="avatar"><div>👩</div></div>Sana</div><div class="story"><div class="avatar"><div>👨</div></div>Kartik</div>
+</div>
+<div class="card"><div class="user"><div class="avatar"><div>👩</div></div><div><b>Riya Sharma</b><div class="muted">@riya.sharma · 2h</div></div></div>
+<div class="caption">Some moments don't need a caption ❤️</div><div class="postimg">🌄</div><div class="actions"><span onclick="like(this)">♡</span><span>◯</span><span>↗</span><span style="margin-left:auto">▢</span></div><div class="muted">1.2K likes · 243 comments</div></div>
+<div class="card"><div class="user"><div class="avatar"><div>👨</div></div><div><b>Aman Verma</b><div class="muted">@amanv · 4h</div></div></div><div class="caption">Good vibes only 🍀</div><div class="postimg">🌲</div><div class="actions"><span onclick="like(this)">♡</span><span>◯</span><span>↗</span></div></div>
+</section>
+
+<section id="search" class="screen"><h2>Search</h2><input class="search" placeholder="Search people, posts, tags…" oninput="filterPeople(this.value)"><h3>Trending</h3><div class="chips"><span class="chip">#nature</span><span class="chip">#travel</span><span class="chip">#love</span><span class="chip">#friends</span><span class="chip">#music</span></div><h3>People you may know</h3><div id="people"></div></section>
+
+<section id="create" class="screen"><h2>Create Post</h2><div class="composer"><textarea placeholder="What's on your mind?"></textarea><div class="preview">🌅</div><div class="row">🖼️ <div class="grow">Photo / Video</div>›</div><div class="row">👥 <div class="grow">Tag People</div>›</div><div class="row">📍 <div class="grow">Add Location</div>›</div><button class="btn" style="width:100%;margin-top:18px" onclick="alert('Post published!')">Publish</button></div></section>
+
+<section id="messages" class="screen"><h2>Messages</h2><input class="search" placeholder="Search messages…"><div class="row"><div class="mini">👩</div><div class="grow"><b>Riya Sharma</b><div class="muted">Okay 😊</div></div><small>2:15 PM</small></div><div class="row"><div class="mini">👨</div><div class="grow"><b>Aman Verma</b><div class="muted">You: Bhai kal milte hain</div></div><small>1:42 PM</small></div><div class="row"><div class="mini">👩</div><div class="grow"><b>Sneha Patel</b><div class="muted">Haha 😂</div></div><small>12:30 PM</small></div></section>
+
+<section id="notifications" class="screen"><h2>Notifications</h2><div class="row"><div class="mini">👩</div><div class="grow"><b>Riya Sharma</b> liked your post<div class="muted">2m ago</div></div><span class="badge">♥</span></div><div class="row"><div class="mini">👨</div><div class="grow"><b>Aman Verma</b> commented<div class="muted">“Beautiful view!”</div></div><span>💬</span></div><div class="row"><div class="mini">👩</div><div class="grow"><b>Sneha Patel</b> started following you</div><button class="btn">Follow</button></div></section>
+
+<section id="profile" class="screen"><div class="profileHero"><div class="profileAvatar">👨</div></div><h2>Bhupendra Meena</h2><div class="muted">@bhupendra</div><div class="stats"><div><b>24</b><small>Posts</small></div><div><b>1.2K</b><small>Followers</small></div><div><b>312</b><small>Following</small></div></div><button class="btn outline" style="width:100%">Edit Profile</button><p>Just a simple soul<br>Dreams · Music · Nature 🌿</p><div class="grid"><div class="tile">🌄</div><div class="tile">🌅</div><div class="tile">🏔️</div><div class="tile">🌲</div><div class="tile">🌌</div><div class="tile">🌊</div></div></section>
+
+<nav>
+<button data-screen="home" class="active">⌂<small>Home</small></button>
+<button data-screen="search">⌕<small>Search</small></button>
+<button data-screen="create" class="plus">＋</button>
+<button data-screen="messages">▣<small>Messages</small></button>
+<button data-screen="profile">◉<small>Profile</small></button>
+</nav>
+</div>
+<script>
+const screens=[...document.querySelectorAll('.screen')], nav=[...document.querySelectorAll('nav button[data-screen]')];
+function show(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));nav.forEach(b=>b.classList.toggle('active',b.dataset.screen===id));}
+nav.forEach(b=>b.onclick=()=>show(b.dataset.screen));
+function like(el){el.textContent=el.textContent==='♡'?'♥':'♡';el.style.color=el.textContent==='♥'?'#ff6b81':''}
+const names=[['Anjali Meena','👩'],['Rohit Singh','👨'],['Sneha Sharma','👩'],['Karan Patel','👨']];
+function filterPeople(q){renderPeople(names.filter(x=>x[0].toLowerCase().includes(q.toLowerCase())))}
+function renderPeople(arr){document.getElementById('people').innerHTML=arr.map(x=>`<div class="row"><div class="mini">${x[1]}</div><div class="grow"><b>${x[0]}</b><div class="muted">@${x[0].toLowerCase().replace(' ','_')}</div></div><button class="btn" onclick="this.textContent=this.textContent==='Follow'?'Following':'Follow'">Follow</button></div>`).join('')}
+renderPeople(names);
+</script>
+</body>
+</html>
