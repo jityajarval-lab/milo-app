@@ -62,6 +62,10 @@ const names=[['Anjali Meena','👩'],['Rohit Singh','👨'],['Sneha Sharma','�
 function filterPeople(q){renderPeople(names.filter(x=>x[0].toLowerCase().includes(q.toLowerCase())))}
 function renderPeople(arr){document.getElementById('people').innerHTML=arr.map(x=>`<div class="row"><div class="mini">${x[1]}</div><div class="grow"><b>${x[0]}</b><div class="muted">@${x[0].toLowerCase().replace(' ','_')}</div></div><button class="btn" onclick="this.textContent=this.textContent==='Follow'?'Following':'Follow'">Follow</button></div>`).join('')}
 renderPeople(names);
+</script><script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+}
 </script>
 </body>
 </html>
