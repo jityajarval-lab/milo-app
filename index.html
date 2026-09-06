@@ -54,7 +54,7 @@ h2{margin:8px 0 18px}.empty{text-align:center;color:#8b94a8;padding:70px 20px}
 </nav>
 </div>
 <script>
-const screens=[...document.querySelectorAll('.screen')], nav=[...document.querySelectorAll('nav button[data-screen]')];
+const screens=[...document.querySelectorAll('.screen')], nav=[...document.querySelectorAll('nav button[data-screen]')];const nav = document.querySelectorAll("nav button");
 function show(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));nav.forEach(b=>b.classList.toggle('active',b.dataset.screen===id));}
 nav.forEach(b=>b.onclick=()=>show(b.dataset.screen));
 function like(el){el.textContent=el.textContent==='♡'?'♥':'♡';el.style.color=el.textContent==='♥'?'#ff6b81':''}
